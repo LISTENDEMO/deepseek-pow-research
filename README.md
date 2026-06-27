@@ -118,7 +118,7 @@ graph TB
     C --> D[Padding<br/>补位到 block size]
     D --> E[Block Processing<br/>处理 1088-bit blocks]
     
-    E --> F[Permutation<br/>Keccak-f[1600]]
+    E --> F[Permutation<br/>Keccak-f&#91;1600&#93;]
     F --> G[24 Rounds<br/>θ, ρ, π, χ, ι]
     
     G --> H[Squeeze Phase<br/>挤压输出]
