@@ -470,14 +470,71 @@ echo '{"challenge":"xxx","salt":"xxx","expire_at":xxx,"difficulty":144000}' | no
 
 ```
 DeepSeek/
-├── deepseek_gui.py               # PyQt6 GUI (主要界面)
-├── deepseek_pow_solver.js        # Node.js WASM solver
-├── deepseek_python_client_v2.py  # Python 客户端 (API 封装)
-├── sha3_wasm.wasm                # DeepSeek WASM
-├── analyze_wasm.py               # WASM 分析工具
-├── keccak_sponge.py              # Keccak hash 实现
-├── test_gui_setup.py             # 测试脚本
+├── src/                          # 源码目录
+│   ├── python/                   # Python 模块
+│   │   ├── wasm/                 # WASM 分析工具 (10 files)
+│   │   │   ├── analyze_wasm*.py  # WASM 二进制分析
+│   │   │   ├── parse_wasm*.py    # WASM 类型解析
+│   │   │   └── wasm_*.py         # WASM Python 调用
+│   │   ├── hash/                 # Keccak Hash 实现 (5 files)
+│   │   │   ├── deepseek_keccak*.py  # 多版本实现
+│   │   │   └── keccak_sponge.py     # Sponge 构造
+│   │   ├── api/                  # API Client (10 files)
+│   │   │   ├── deepseek_api.py      # API 封装
+│   │   │   ├── deepseek_client*.py  # 多版本客户端
+│   │   │   ├── deepseek_chat*.py    # 聊天功能
+│   │   │   └ deepseek_proxy.py      # 代理支持
+│   │   │   └ debug_api.py           # API 调试工具
+│   │   └── gui/                  # GUI 界面 (1 file)
+│   │       └ deepseek_gui.py        # PyQt6 主界面
+│   │
+│   ├── javascript/               # JavaScript 模块
+│   │   ├── wasm/                 # WASM 相关 (13 files)
+│   │   │   ├── wasm_*.js         # WASM 测试和分析
+│   │   │   ├── analyze_*.js      # Hash 函数分析
+│   │   │   ├── deepseek_worker*.js  # Web Worker
+│   │   │   └ deepseek_main.js       # 主入口
+│   │   ├── keccak/               # Keccak 实现 (10 files)
+│   │   │   ├── exact_js_keccak.js   # 精确实现
+│   │   │   ├── test_*keccak*.js     # 多版本测试
+│   │   │   └ verify_js_sha3.js      # SHA-3 验证
+│   │   └── solver/               # PoW Solver (7 files)
+│   │       ├── deepseek_pow_solver.js  # 主 Solver
+│   │       ├── pow_solver*.js          # 多版本实现
+│   │       └ solve_pow*.js             # 求解脚本
+│   │
+│   └ wasm/                       # WASM 二进制 (reserved)
+│
+├── tests/                        # 测试目录
+│   ├── python/                   # Python 测试 (25 files)
+│   │   ├── test_api*.py          # API 测试
+│   │   ├── test_pow*.py          # PoW 测试
+│   │   ├── test_keccak*.py       # Hash 测试
+│   │   ├── test_full*.py         # 完整流程测试
+│   │   └ verify_pow*.py          # PoW 验证脚本
+│   └ javascript/                 # JavaScript 测试 (reserved)
+│
+├── examples/                     # 示例代码 (reserved)
+│
+├── deepseek_sdk/                 # SDK 目录
+│   ├── config.json.example       # 配置示例
+│   └ sha3_wasm.wasm              # DeepSeek WASM
+│
+├── sha3_wasm.wasm                # WASM 二进制 (根目录副本)
+├── README.md                     # 项目文档
+├── USAGE.md                      # 使用说明
+└ CLAUDE.md                       # Claude Code 配置
+└ .gitignore                      # Git 忽略规则
+└ package.json                   # Node.js 依赖
 ```
+
+**模块分类说明**：
+- **WASM 分析工具** (src/python/wasm) - WASM 二进制解析、函数签名推断、内存布局分析
+- **Keccak Hash 实现** (src/python/hash, src/javascript/keccak) - SHA-3 标准 hash 算法实现
+- **PoW Solver** (src/javascript/solver) - Proof of Work challenge 求解器
+- **API Client** (src/python/api) - DeepSeek API 封装和聊天功能
+- **GUI 界面** (src/python/gui) - PyQt6 桌面应用界面
+- **测试体系** (tests/python) - 完整的测试验证脚本
 
 ## 注意事项
 
