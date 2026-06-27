@@ -1,0 +1,4 @@
+{
+  "token": "Bearer YOUR_TOKEN_HERE",
+  "base_url": "https://chat.deepseek.com"
+}

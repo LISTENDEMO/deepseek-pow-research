@@ -1,0 +1,59 @@
+# Secrets - 包含敏感信息，不能上传
+.env
+.env.*.local
+*.env
+deepseek_login.json
+deepseek_cookies.txt
+*.token
+*.key
+*.secret
+
+# Claude Code local settings
+.claude/settings.local.json
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js
+node_modules/
+.npm-cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# WASM build artifacts (保留源文件)
+*.wasm.o
+*.wasm.wast
